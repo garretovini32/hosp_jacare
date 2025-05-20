@@ -1,4 +1,3 @@
-
 import streamlit as st
 from supabase import create_client
 import pandas as pd
@@ -25,13 +24,13 @@ def validar_telefone(tel):
     tel = tel.replace(" ", "").replace("-", "").replace("(", "").replace(")", "")
     return tel.isdigit() and 8 <= len(tel) <= 15
 
-# Estilo customizado (fonte, cores, layout)
+# Estilo customizado com Poppins forçado
 st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
     html, body, [class*="css"] {
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Poppins', sans-serif !important;
         background-color: #f4f6f9;
     }
 
@@ -44,20 +43,18 @@ st.markdown("""
 
     h1, h2, h3 {
         color: #2c3e50;
+        font-weight: 600;
+        font-family: 'Poppins', sans-serif !important;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# Cabeçalho
+
+# Cabeçalho atualizado (nome centralizado, sem cruz azul)
 st.markdown("""
-<div style="display: flex; align-items: center; gap: 1rem;">
-    <svg width="50" height="50" viewBox="0 0 24 24" fill="#007BFF" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 2h4v8h8v4h-8v8h-4v-8H2v-4h8V2z"/>
-    </svg>
-    <div>
-        <h1 style="margin-bottom: 0;">Hospital Jacaré Pereira</h1>
-        <p style="color: gray; margin-top: 0;">Unidade Taboão da Serra</p>
-    </div>
+<div style="text-align: center; padding: 20px 0;">
+    <h1 style="margin-bottom: 0;">Saúde Mais</h1>
+    <p style="color: gray; margin-top: 0;">Unidade Taboão da Serra</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -197,4 +194,3 @@ with abas[1]:
                 file_name=f"{nome_arquivo}.json",
                 mime="application/json"
             )
-
